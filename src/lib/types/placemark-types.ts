@@ -9,6 +9,7 @@ export interface User {
 export interface Street {
     id: number;
     name: string;
+    img: string;
     user: User;
 }
 
