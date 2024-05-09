@@ -1,26 +1,31 @@
 export interface User {
-    id: number;
+    _id: number;
     firstName: string;
     lastName: string;
     email: string;
     password: string;
     }
 
+export interface Session {
+    name: string;
+    _id: string;
+    token: string;
+    }
+
 export interface Street {
-    id: number;
+    _id: number;
     name: string;
     img: string;
     user: User;
 }
 
 export interface Placemark {
-    id: number;
+    _id: number;
     title: string;
     description: string;
     category: string;
     year: number;
     lat: number;
     lng: number;
-    user: User;
     street: Street;
     }
