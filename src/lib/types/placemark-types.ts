@@ -16,8 +16,7 @@ export interface Session {
 export interface Street {
     _id?: number;
     name: string;
-    img?: string;
-    user?: User | string;
+    userid?: User | string;
 }
 
 export interface Placemark {

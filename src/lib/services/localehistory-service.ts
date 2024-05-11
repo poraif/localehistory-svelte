@@ -35,9 +35,10 @@ export const localeHistoryService = {
 
     async createStreet(street: Street, session: Session) {
       try {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
-        const response = await axios.post(this.baseUrl + "/api/streets/", street);
-        return response.status >= 200 && response.status < 300;
+        axios.defaults.headers.common["Authorization"] = session.token;
+        const response = await axios.post(this.baseUrl + "/api/streets", street);
+        console.log(session.token);
+        return response.status == 201;
       } catch (error) {
         return false;
       }

@@ -14,6 +14,7 @@
     let session = await localeHistoryService.login(email, password);
     if (session) {
       currentSession.set(session);
+      localStorage.localehistory = JSON.stringify(session);
       goto("/dashboard");
     } else {
       email = "";
