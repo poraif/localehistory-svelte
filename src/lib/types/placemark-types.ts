@@ -1,9 +1,10 @@
 export interface User {
-    _id: number;
+    _id?: number;
     firstName: string;
     lastName: string;
     email: string;
     password: string;
+    admin?: boolean;
     }
 
 export interface Session {
@@ -13,19 +14,19 @@ export interface Session {
     }
 
 export interface Street {
-    _id: number;
+    _id?: number;
     name: string;
-    img: string;
-    user: User;
+    img?: string;
+    user?: User | string;
 }
 
 export interface Placemark {
-    _id: number;
+    _id?: number;
     title: string;
     description: string;
     category: string;
     year: number;
-    lat: number;
-    lng: number;
-    street: Street;
+    latitude: number;
+    longitude: number;
+    street?: Street;
     }

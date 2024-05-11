@@ -2,7 +2,7 @@ import axios from "axios";
 import type { Session, User, Placemark, Street } from "$lib/types/placemark-types";
 
 export const localeHistoryService = {
-    baseUrl: "http://localhost:4000",
+    baseUrl: "http://localhost:3000",
 
     async signup(user: User): Promise<boolean> {
       try {
@@ -33,9 +33,14 @@ export const localeHistoryService = {
         return res.data;
     },
 
-    async createStreet(street: Street): Promise<boolean> {
-        const res = await axios.post(`${this.baseUrl}/api/streets`, street);
-        return res.data;
+    async createStreet(street: Street, session: Session) {
+      try {
+        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
+        const response = await axios.post(this.baseUrl + "/api/streets/", street);
+        return response.status >= 200 && response.status < 300;
+      } catch (error) {
+        return false;
+      }
     },
 
     async deleteAllStreets(): Promise<boolean> {
@@ -48,8 +53,9 @@ export const localeHistoryService = {
         return res.data;
     },
 
-    async getAllStreets(): Promise<Street[]> {
+    async getAllStreets(session: Session): Promise<Street[]> {
         try {
+        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
         const res = await axios.get(`${this.baseUrl}/api/streets`);
         return res.data;
         } catch (error) {
