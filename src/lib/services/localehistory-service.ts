@@ -63,15 +63,25 @@ export const localeHistoryService = {
            return [];
       }
     },
+  
 
-    async getStreet(street: Street): Promise<Street | null> {
-        const res = await axios.get(`${this.baseUrl}/api/streets/${street._id}`);
+    async getStreet(id: string): Promise<Street> {
+        const res = await axios.get(`${this.baseUrl}/api/streets/${id}`);
         return res.data;
     },
 
     async getAllPlacemarks(): Promise<Placemark[]> {
         try {
         const res = await axios.get(`${this.baseUrl}/api/placemarks`);
+        return res.data;
+        } catch (error) {
+           return [];
+      }
+    },
+
+    async getStreetPlacemarks(id: string): Promise<Placemark[]> {
+        try {
+        const res = await axios.get(`${this.baseUrl}/api/placemarks/${id}`);
         return res.data;
         } catch (error) {
            return [];
@@ -88,8 +98,8 @@ export const localeHistoryService = {
         return res.data;
     },
 
-    async getPlacemark(placemark: Placemark): Promise<Placemark | null> {
-        const res = await axios.get(`${this.baseUrl}/api/placemarks/${placemark._id}`);
+    async getPlacemark(id: string): Promise<Placemark> {
+        const res = await axios.get(`${this.baseUrl}/api/placemarks/${id}`);
         return res.data;
     },
 

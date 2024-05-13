@@ -1,5 +1,5 @@
 export interface User {
-    _id?: number;
+    _id?: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -14,13 +14,14 @@ export interface Session {
     }
 
 export interface Street {
-    _id?: number;
+    _id?: string;
     name: string;
     userid?: User | string;
+    placemarks?: Placemark[];
 }
 
 export interface Placemark {
-    _id?: number;
+    _id?: string;
     title: string;
     description: string;
     category: string;

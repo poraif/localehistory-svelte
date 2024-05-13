@@ -23,7 +23,7 @@
           insert count placemarks
         </td>
         <td>
-          <button class="button is-primary">Open</button>
+          <a href="/street/{street._id}">Open</a>
         </td>
       </tr>
     {/each}
