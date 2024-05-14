@@ -11,22 +11,24 @@
     let placemarks: Placemark[] = [];
     subTitle.set("Add a placemark");
 
-  subTitle.set("Add a placemark");
+    let streetData = data.street;
+  subTitle.set(streetData.name);
 
-  onMount(async () => {
-    if (data.street && data.street._id) {
-        placemarks = await localeHistoryService.getStreetPlacemarks(data.street._id);
-    }
-});
+//   onMount(async () => {
+//     if (data.street && data.street._id) {
+//         placemarks = await localeHistoryService.getStreetPlacemarks(data.street._id);
+//     }
+// });
 
-  latestPlacemark.subscribe(async (placemark) => {
-    if (placemark) {
-      placemarks.push(placemark);
-      placemarks = [...placemarks];
-    }
+//   latestPlacemark.subscribe(async (placemark) => {
+//     if (placemark) {
+//       placemarks.push(placemark);
+//       placemarks = [...placemarks];
+//     }
     
-  });
+//   });
+
 </script>
 
-<PlacemarkList {placemarks} {data} />
-<AddPlacemark />
+<!-- <PlacemarkList {placemarks} {data} />
+<AddPlacemark /> -->

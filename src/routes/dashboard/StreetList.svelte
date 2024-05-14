@@ -2,6 +2,7 @@
   export let streets = [
   {
     name: "O'Connell Street",
+    _id: ""
   }
 ];
 

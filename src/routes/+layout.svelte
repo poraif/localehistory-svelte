@@ -6,6 +6,7 @@
 
   if (browser) {
     const savedSession = localStorage.localehistory;
+    console.log(`savedSession: ${savedSession}`);
     if (savedSession) {
       const session = JSON.parse(savedSession);
       currentSession.set(session);

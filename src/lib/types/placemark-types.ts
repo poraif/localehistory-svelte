@@ -8,7 +8,7 @@ export interface User {
     }
 
 export interface Session {
-    name: string;
+    email: string;
     _id: string;
     token: string;
     }
@@ -29,4 +29,9 @@ export interface Placemark {
     latitude: number;
     longitude: number;
     street?: Street;
+    }
+
+export interface DataSet {
+    labels: string[];
+    datasets: [{ values: number[] }];
     }

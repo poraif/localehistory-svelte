@@ -65,13 +65,15 @@ export const localeHistoryService = {
     },
   
 
-    async getStreet(id: string): Promise<Street> {
+    async getStreet(id: string, session: Session): Promise<Street> {
+        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
         const res = await axios.get(`${this.baseUrl}/api/streets/${id}`);
         return res.data;
     },
 
-    async getAllPlacemarks(): Promise<Placemark[]> {
+    async getAllPlacemarks(session: Session): Promise<Placemark[]> {
         try {
+        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
         const res = await axios.get(`${this.baseUrl}/api/placemarks`);
         return res.data;
         } catch (error) {
@@ -114,7 +116,7 @@ export const localeHistoryService = {
         if (response.data.success) {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
           const session: Session = {
-            name: response.data.name,
+            email: response.data.email,
             token: response.data.token,
             _id: response.data.id
           };

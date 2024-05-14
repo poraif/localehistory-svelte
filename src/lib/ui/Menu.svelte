@@ -17,7 +17,7 @@
           <a class="navbar-item" href="/dashboard"> Dashboard </a>
           <a class="navbar-item" href="/charts"> Charts </a>
           <a class="navbar-item" href="/profile"> Profile </a>
-          <a class="navbar-item" href="/logout"> Logout [{$currentSession.name}]</a>
+          <a class="navbar-item" href="/logout"> Logout [{$currentSession.email}]</a>
         </div>
         <div></div>
       </div>

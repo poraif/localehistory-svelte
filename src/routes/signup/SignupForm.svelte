@@ -3,6 +3,7 @@
     import UserCredentials from "$lib/ui/UserCredentials.svelte";
     import UserDetails from "$lib/ui/UserDetails.svelte";
     import Message from "$lib/ui/Message.svelte";
+    import { localeHistoryService } from "$lib/services/localehistory-service";
   
     let firstName = "";
     let lastName = "";
@@ -11,13 +12,19 @@
     let message = "";
   
     async function signup() {
-      const success = false;
-      if (success) {
-        goto("/donate");
-      } else {
-        message = "Error Trying to sign up";
-      }
+    const user = {
+      firstName,
+      lastName,
+      email,
+      password
+    };
+    const success = await localeHistoryService.signup(user);
+    if (success) {
+      goto("/login");
+    } else {
+      message = "Error Trying to sign up";
     }
+  }
   </script>
   
   {#if message}
