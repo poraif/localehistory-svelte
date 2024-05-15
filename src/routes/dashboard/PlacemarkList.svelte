@@ -6,8 +6,8 @@
     title: "GPO",
     description: "The site of the 1916 Easter Rising. It is now a museum and post office. It's where the proclamation of independence was read out.",
     year: 2003,
-    latitude: 53.3498,
-    longitude: -6.2603,
+    lat: 53.3498,
+    lng: -6.2603,
     category: "Landmark",
     userid: ""
   }

@@ -27,8 +27,8 @@ export interface Placemark {
     description: string;
     category: string;
     year: number;
-    latitude: number;
-    longitude: number;
+    lat: number;
+    lng: number;
     userid?: string;
     }
 

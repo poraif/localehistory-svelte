@@ -61,8 +61,8 @@ export function placemarksByLocation(placemarkList: Placemark[]): DataSet {
     placemarkList.forEach((placemark) => {
       let found = false;
       cities.forEach((city, index) => {
-        if (placemark.latitude >= city.latRange[0] && placemark.latitude <= city.latRange[1] &&
-            placemark.longitude >= city.lonRange[0] && placemark.longitude <= city.lonRange[1]) {
+        if (placemark.lat >= city.latRange[0] && placemark.lat <= city.latRange[1] &&
+            placemark.lng >= city.lonRange[0] && placemark.lng <= city.lonRange[1]) {
           totalEachLocation.datasets[0].values[index + 1] += 1;
           found = true;
         }

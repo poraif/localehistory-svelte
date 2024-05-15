@@ -25,11 +25,11 @@
                 </tr>
                 <tr>
                     <td>Latitude</td>
-                    <td>{data.placemark.latitude}</td>
+                    <td>{data.placemark.lat}</td>
                 </tr>
                 <tr>
                     <td>Longitude</td>
-                    <td>{data.placemark.longitude}</td>
+                    <td>{data.placemark.lng}</td>
                 </tr>
             </tbody>
         </table>

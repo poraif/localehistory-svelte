@@ -3,9 +3,9 @@
   import Chart from "svelte-frappe-charts";
   import { onMount } from "svelte";
   import { localeHistoryService } from "$lib/services/localehistory-service";
-  import { currentSession, subTitle } from "$lib/stores";
+  import { currentSession, subTitle, latestPlacemark } from "$lib/stores";
   import { get } from "svelte/store";
-  import type { DataSet } from "$lib/types/placemark-types";
+  import type { DataSet, Placemark } from "$lib/types/placemark-types";
   import { generateByCategory, placemarksByCentury, placemarksByLocation } from "$lib/services/chart-utils";
   import Card from "$lib/ui/Card.svelte";
   // import { Bar } from 'svelte-chartjs';
@@ -13,6 +13,7 @@
   let totalEachCategory: DataSet;
   let totalEachLocation: DataSet;
   let totalEachCentury: DataSet;
+  let placemarks: Placemark[] = [];
 
 
   subTitle.set("Placemark data");
@@ -24,6 +25,17 @@
     totalEachLocation = placemarksByLocation(placemarkList);
     totalEachCentury = placemarksByCentury(placemarkList);
   });
+
+  latestPlacemark.subscribe(async (placemark) => {
+    if (placemark) {
+      placemarks.push(placemark);
+      placemarks = [...placemarks];
+      totalEachCategory = generateByCategory(placemarks);
+      totalEachLocation = placemarksByLocation(placemarks);
+      totalEachCentury = placemarksByCentury(placemarks);
+    }
+  });
+  
 </script>
 
 <div class="columns">

@@ -20,6 +20,7 @@
       placemarks = [...placemarks];
     }
   });
+
 </script>
 
 <PlacemarkList {placemarks}/>

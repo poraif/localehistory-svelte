@@ -9,8 +9,8 @@
   let title = "Placemark";
   let description = "Description";
   let year = 2003;
-  let latitude = 53.3498;
-  let longitude = -6.2603;
+  let lat = 53.3498;
+  let lng = -6.2603;
   let categories = ["Landmark", "Residence", "Event", "Other"];
   let selectedCategory = "Landmark";
   let userid = "";
@@ -24,8 +24,8 @@
           title: title,
           description: description,
           year: year,
-          latitude: latitude,
-          longitude: longitude,
+          lat: lat,
+          lng: lng,
           category: selectedCategory,
           userid: $currentSession._id
         };
@@ -63,7 +63,7 @@
       {/each}
     </div>
   </div>
-  <Coordinates bind:latitude bind:longitude />
+  <Coordinates bind:lat bind:lng />
   <div class="field">
     <div class="control">
       <button class="button is-success is-fullwidth">Add</button>

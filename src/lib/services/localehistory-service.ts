@@ -65,7 +65,7 @@ export const localeHistoryService = {
     async createPlacemark(placemark: Placemark, session: Session) {
       try {
         axios.defaults.headers.common["Authorization"] = session.token;
-        const response = await axios.post(`${this.baseUrl}/api/streets/${session._id}/placemarks`, placemark);
+        const response = await axios.post(`${this.baseUrl}/api/users/${session._id}/placemarks`, placemark);
         console.log(session.token);
         return response.status == 201;
       } catch (error) {
