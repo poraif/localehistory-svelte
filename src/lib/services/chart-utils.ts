@@ -35,10 +35,10 @@ export function generateByCategory(placemarkList: Placemark[]): DataSet {
 
 export function placemarksByLocation(placemarkList: Placemark[]): DataSet {
     const totalEachLocation: DataSet = {
-      labels: ["Dublin", "Cork", "Galway", "Belfast", "Limerick", "Derry", "Waterford", "Drogheda", "Dundalk", "Sligo", "Ennis", "Armagh"],
+      labels: ["Other", "Dublin", "Cork", "Galway", "Belfast", "Limerick", "Derry", "Waterford", "Drogheda", "Dundalk", "Sligo", "Ennis", "Armagh"],
       datasets: [
         {
-          values: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          values: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         }
       ]
     };
@@ -59,12 +59,17 @@ export function placemarksByLocation(placemarkList: Placemark[]): DataSet {
     ];
   
     placemarkList.forEach((placemark) => {
+      let found = false;
       cities.forEach((city, index) => {
         if (placemark.latitude >= city.latRange[0] && placemark.latitude <= city.latRange[1] &&
             placemark.longitude >= city.lonRange[0] && placemark.longitude <= city.lonRange[1]) {
-          totalEachLocation.datasets[0].values[index] += 1;
+          totalEachLocation.datasets[0].values[index + 1] += 1;
+          found = true;
         }
       });
+      if (!found) {
+        totalEachLocation.datasets[0].values[0] += 1;
+      }
     });
   
     return totalEachLocation;
@@ -72,26 +77,31 @@ export function placemarksByLocation(placemarkList: Placemark[]): DataSet {
 
 export function placemarksByCentury(placemarkList: Placemark[]): DataSet {
     const totalsEachCentury: DataSet = {
-    labels: ["1700s", "1800s", "1900s", "2000s"],
+    labels: ["Earlier", "1700s", "1800s", "1900s", "2000s"],
     datasets: [
       {
-        values: [0, 0, 0, 0]
+        values: [0, 0, 0, 0, 0]
       }
     ]
   };
 
  placemarkList.forEach((placemark) => {
-    if (placemark.year >= 1700 && placemark.year < 1800) {
-        totalsEachCentury.datasets[0].values[0] += 1;
-    } else if (placemark.year >= 1800 && placemark.year < 1900) {
-        totalsEachCentury.datasets[0].values[1] += 1;
-    } else if (placemark.year >= 1900 && placemark.year < 2000) {
-        totalsEachCentury.datasets[0].values[2] += 1;
-    } else {
-        totalsEachCentury.datasets[0].values[3] += 1;
+    if (placemark.year < 1700) {
+      totalsEachCentury.datasets[0].values[0] += 1;
+    } else if (placemark.year >= 1700 && placemark.year < 1800) {
+      totalsEachCentury.datasets[0].values[1] += 1;
     }
-  });
-    
+    else if (placemark.year >= 1800 && placemark.year < 1900) {
+      totalsEachCentury.datasets[0].values[2] += 1;
+    }
+    else if (placemark.year >= 1900 && placemark.year < 2000) {
+      totalsEachCentury.datasets[0].values[3] += 1;
+    }
+    else if (placemark.year >= 2000) {
+      totalsEachCentury.datasets[0].values[4] += 1;
+    }
+  }
+  );
         return totalsEachCentury;
 }
 

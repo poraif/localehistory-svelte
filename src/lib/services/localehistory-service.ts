@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Session, User, Placemark, Street } from "$lib/types/placemark-types";
+import type { Session, User, Placemark } from "$lib/types/placemark-types";
 
 export const localeHistoryService = {
     baseUrl: "http://localhost:3000",
@@ -11,6 +11,25 @@ export const localeHistoryService = {
       } catch (error) {
         console.log(error);
         return false;
+      }
+    },
+
+    async login(email: string, password: string): Promise<Session | null> {
+      try {
+        const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, { email, password });
+        if (response.data.success) {
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+          const session: Session = {
+            email: response.data.email,
+            token: response.data.token,
+            _id: response.data.id
+          };
+          return session;
+        }
+        return null;
+      } catch (error) {
+        console.log(error);
+        return null;
       }
     },
 
@@ -33,44 +52,6 @@ export const localeHistoryService = {
         return res.data;
     },
 
-    async createStreet(street: Street, session: Session) {
-      try {
-        axios.defaults.headers.common["Authorization"] = session.token;
-        const response = await axios.post(this.baseUrl + "/api/streets", street);
-        console.log(session.token);
-        return response.status == 201;
-      } catch (error) {
-        return false;
-      }
-    },
-
-    async deleteAllStreets(): Promise<boolean> {
-        const res = await axios.delete(`${this.baseUrl}/api/streets`);
-        return res.data;
-    },
-
-    async deleteStreet(street: Street): Promise<boolean> {
-        const res = await axios.delete(`${this.baseUrl}/api/streets/${street._id}`);
-        return res.data;
-    },
-
-    async getAllStreets(session: Session): Promise<Street[]> {
-        try {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
-        const res = await axios.get(`${this.baseUrl}/api/streets`);
-        return res.data;
-        } catch (error) {
-           return [];
-      }
-    },
-  
-
-    async getStreet(id: string, session: Session): Promise<Street> {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
-        const res = await axios.get(`${this.baseUrl}/api/streets/${id}`);
-        return res.data;
-    },
-
     async getAllPlacemarks(session: Session): Promise<Placemark[]> {
         try {
         axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
@@ -81,18 +62,15 @@ export const localeHistoryService = {
       }
     },
 
-    async getStreetPlacemarks(id: string): Promise<Placemark[]> {
-        try {
-        const res = await axios.get(`${this.baseUrl}/api/placemarks/${id}`);
-        return res.data;
-        } catch (error) {
-           return [];
+    async createPlacemark(placemark: Placemark, session: Session) {
+      try {
+        axios.defaults.headers.common["Authorization"] = session.token;
+        const response = await axios.post(`${this.baseUrl}/api/streets/${session._id}/placemarks`, placemark);
+        console.log(session.token);
+        return response.status == 201;
+      } catch (error) {
+        return false;
       }
-    },
-
-    async createPlacemark(street:Street, placemark: Placemark): Promise<boolean> {
-        const res = await axios.post(`${this.baseUrl}/api/streets/${street._id}/placemarks`, placemark);
-        return res.data;
     },
 
     async deleteAllPlacemarks(): Promise<boolean> {
@@ -109,24 +87,51 @@ export const localeHistoryService = {
         const res = await axios.delete(`${this.baseUrl}/api/placemarks/${placemark._id}`);
         return res.data;
     },
-        
-    async login(email: string, password: string): Promise<Session | null> {
-      try {
-        const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, { email, password });
-        if (response.data.success) {
-          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
-          const session: Session = {
-            email: response.data.email,
-            token: response.data.token,
-            _id: response.data.id
-          };
-          return session;
-        }
-        return null;
-      } catch (error) {
-        console.log(error);
-        return null;
-      }
-    },
 
+        // async createStreet(street: Street, session: Session) {
+    //   try {
+    //     axios.defaults.headers.common["Authorization"] = session.token;
+    //     const response = await axios.post(this.baseUrl + "/api/streets", street);
+    //     console.log(session.token);
+    //     return response.status == 201;
+    //   } catch (error) {
+    //     return false;
+    //   }
+    // },
+
+    // async deleteAllStreets(): Promise<boolean> {
+    //     const res = await axios.delete(`${this.baseUrl}/api/streets`);
+    //     return res.data;
+    // },
+
+    // async deleteStreet(street: Street): Promise<boolean> {
+    //     const res = await axios.delete(`${this.baseUrl}/api/streets/${street._id}`);
+    //     return res.data;
+    // },
+
+    // async getAllStreets(session: Session): Promise<Street[]> {
+    //     try {
+    //     axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
+    //     const res = await axios.get(`${this.baseUrl}/api/streets`);
+    //     return res.data;
+    //     } catch (error) {
+    //        return [];
+    //   }
+    // },
+  
+
+    // async getStreet(id: string, session: Session): Promise<Street> {
+    //     axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
+    //     const res = await axios.get(`${this.baseUrl}/api/streets/${id}`);
+    //     return res.data;
+    // },
+
+        // async getStreetPlacemarks(id: string): Promise<Placemark[]> {
+    //     try {
+    //     const res = await axios.get(`${this.baseUrl}/api/placemarks/${id}`);
+    //     return res.data;
+    //     } catch (error) {
+    //        return [];
+    //   }
+    // },
   };

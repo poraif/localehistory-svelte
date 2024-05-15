@@ -4,6 +4,7 @@ export interface User {
     lastName: string;
     email: string;
     password: string;
+
     admin?: boolean;
     }
 
@@ -13,12 +14,12 @@ export interface Session {
     token: string;
     }
 
-export interface Street {
-    _id?: string;
-    name: string;
-    userid?: User | string;
-    placemarks?: Placemark[];
-}
+// export interface Street {
+//     _id?: string;
+//     name: string;
+//     userid?: User | string;
+//     placemarks?: Placemark[];
+// }
 
 export interface Placemark {
     _id?: string;
@@ -28,10 +29,15 @@ export interface Placemark {
     year: number;
     latitude: number;
     longitude: number;
-    street?: Street;
+    userid?: string;
     }
 
 export interface DataSet {
     labels: string[];
     datasets: [{ values: number[] }];
     }
+
+// export interface Data {
+//     labels: string[];
+//     datasets: [{ label: string; data: number[]; backgroundColor: string; borderColor: string; borderWidth: number }];
+//     }

@@ -8,19 +8,12 @@
   import type { DataSet } from "$lib/types/placemark-types";
   import { generateByCategory, placemarksByCentury, placemarksByLocation } from "$lib/services/chart-utils";
   import Card from "$lib/ui/Card.svelte";
+  // import { Bar } from 'svelte-chartjs';
 
   let totalEachCategory: DataSet;
   let totalEachLocation: DataSet;
   let totalEachCentury: DataSet;
 
-  const totalByMethod = {
-    labels: ["paypal", "direct"],
-    datasets: [
-      {
-        values: [0, 0]
-      }
-    ]
-  };
 
   subTitle.set("Placemark data");
 
@@ -36,7 +29,7 @@
 <div class="columns">
   <div class="column">
     <Card title="Placemarks by category">
-      <Chart data={totalEachCategory} type="donut" />
+      <Chart data={totalEachCategory} type="donut" maxSlices=5 />
     </Card>
   </div>
   <div class="column has-text-centered">
@@ -44,9 +37,11 @@
       <Chart data={totalEachCentury} type="bar" />
     </Card>
   </div>
+</div>
+<div class="columns">
   <div class="column has-text-centered">
     <Card title="Primary locations of placemarks">
-      <Chart data={totalEachLocation} type="heatmap" />
+      <Chart data={totalEachLocation} type="bar" />    
     </Card>
   </div>
 </div>
