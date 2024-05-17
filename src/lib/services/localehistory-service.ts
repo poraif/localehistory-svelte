@@ -9,7 +9,7 @@ export const localeHistoryService = {
         const response = await axios.post(`${this.baseUrl}/api/users`, user);
         return response.data.success === true;
       } catch (error) {
-        console.log(error);
+        console.error(error);
         return false;
       }
     },

@@ -15,7 +15,7 @@
         <div class="navbar-end">
           <a class="navbar-item" href="/about"> About </a>
           <a class="navbar-item" href="/signup"> Sign up </a>
-          <a class="navbar-item" href="/login"> Login [{$currentSession}]</a>
+          <a class="navbar-item" href="/login"> Login</a>
         </div>
         <div></div>
       </div>
