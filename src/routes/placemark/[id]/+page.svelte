@@ -4,7 +4,7 @@
     import { subTitle } from "$lib/stores";
 
   
-    subTitle.set("${data.placemark.title}");
+    subTitle.set(`${data.placemark.title}`);
   </script>
   
 <section class="section">

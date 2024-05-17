@@ -62,6 +62,25 @@ export const localeHistoryService = {
       }
     },
 
+    async uploadPlacemarkImage(id: string, imageFile: File, session: Session): Promise<boolean> {
+      try {
+        const formData = new FormData();
+        formData.append('img', imageFile);
+    
+        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
+        const response = await axios.post(`${this.baseUrl}/api/placemarks/${id}/image`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        return response.status == 200;
+      } catch (error) {
+        console.error(error);
+        return false;
+      }
+    },
+    
+
     async createPlacemark(placemark: Placemark, session: Session) {
       try {
         axios.defaults.headers.common["Authorization"] = session.token;
@@ -78,15 +97,16 @@ export const localeHistoryService = {
         return res.data;
     },
 
-    async getPlacemark(id: string): Promise<Placemark> {
+    async getPlacemark(id: string, session: Session): Promise<Placemark> {
+        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
         const res = await axios.get(`${this.baseUrl}/api/placemarks/${id}`);
         return res.data;
     },
 
-    async deletePlacemark(placemark: Placemark): Promise<boolean> {
-        const res = await axios.delete(`${this.baseUrl}/api/placemarks/${placemark._id}`);
-        return res.data;
-    },
+    async deletePlacemark(id: string) {
+      const res = await axios.delete(`${this.baseUrl}/api/placemarks/${id}`);
+      return res.data;
+  },
 
         // async createStreet(street: Street, session: Session) {
     //   try {

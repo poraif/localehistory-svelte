@@ -32,7 +32,7 @@
          {placemark.category}
         </td>
         <td>
-          <a href="/dashboard">Open</a>
+          <a href="/placemark/{placemark._id}">Open</a>
         </td>
         <td>
           <a href="/dashboard">Delete</a>
