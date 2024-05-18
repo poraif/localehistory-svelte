@@ -11,9 +11,15 @@
     let imgUrl: string;
 
     function handleImageUploaded(event: CustomEvent) {
+        console.log('Image uploaded event received:', event);
         const { imgUrl: uploadedImgUrl, placemarkId } = event.detail;
+        console.log('Uploaded image URL:', uploadedImgUrl);
+        console.log('Placemark ID:', placemarkId);
         if (data.placemark._id === placemarkId) {
             imgUrl = uploadedImgUrl;
+            console.log('Image URL set for placemark:', imgUrl);
+        } else {
+            console.warn('Placemark ID mismatch:', data.placemark._id, placemarkId);
         }
     }
 </script>
@@ -66,4 +72,3 @@
       </div>
     </div>
   </form>
-
