@@ -51,10 +51,6 @@
       "src/hooks.server.ts"
     ]
   },
-  "_leaflet.js": {
-    "file": "_app/immutable/assets/leaflet.HupOsEJb.css",
-    "src": "_leaflet.js"
-  },
   "_ssr.js": {
     "file": "chunks/ssr.js",
     "name": "ssr",
@@ -184,9 +180,6 @@
       "_ssr.js",
       "_stores.js",
       "_Card.js"
-    ],
-    "css": [
-      "_app/immutable/assets/leaflet.HupOsEJb.css"
     ]
   },
   "src/routes/maps/+page.ts": {
@@ -204,9 +197,6 @@
       "_ssr.js",
       "_stores.js",
       "_Card.js"
-    ],
-    "css": [
-      "_app/immutable/assets/leaflet.HupOsEJb.css"
     ]
   },
   "src/routes/placemark/[id]/+page.ts": {

@@ -1,7 +1,6 @@
 import { c as create_ssr_component, a as add_attribute, e as escape, v as validate_component } from "../../../chunks/ssr.js";
 import { s as subTitle } from "../../../chunks/stores.js";
 import { C as Card } from "../../../chunks/Card.js";
-/* empty css                      */
 import L from "leaflet";
 const LeafletMap = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { id = "home-map-id" } = $$props;

@@ -1,11 +1,3 @@
-// const categories = ["Landmark", "Residence", "Event", "Other"];
-// let title = "Add a placemark";
-// let year = 1800;
-// let category = "Landmark";
-// let description = "This is a description of the placemark";
-// let lat = 52.160858;
-// let lng = -7.15242;
-
 import type { DataSet, Placemark } from "$lib/types/placemark-types";
 
 export function generateByCategory(placemarkList: Placemark[]): DataSet {
