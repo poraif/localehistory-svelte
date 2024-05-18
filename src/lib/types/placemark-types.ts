@@ -22,7 +22,7 @@ export interface Session {
 // }
 
 export interface Placemark {
-    _id?: string;
+    _id: string;
     title: string;
     description: string;
     category: string;

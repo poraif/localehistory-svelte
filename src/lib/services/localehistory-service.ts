@@ -61,24 +61,6 @@ export const localeHistoryService = {
            return [];
       }
     },
-
-    async uploadPlacemarkImage(id: string, imageFile: File, session: Session): Promise<boolean> {
-      try {
-        const formData = new FormData();
-        formData.append('img', imageFile);
-    
-        axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
-        const response = await axios.post(`${this.baseUrl}/api/placemarks/${id}/image`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        return response.status == 200;
-      } catch (error) {
-        console.error(error);
-        return false;
-      }
-    },
     
 
     async createPlacemark(placemark: Placemark, session: Session) {
