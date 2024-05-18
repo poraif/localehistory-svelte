@@ -7,7 +7,7 @@
   import type { Placemark } from "$lib/types/placemark-types";
   import { get } from "svelte/store";
 
-  subTitle.set("Reports Geo Data");
+  subTitle.set("Placemarks map");
   let map: LeafletMap;
 
   onMount(async () => {
@@ -18,7 +18,7 @@
         if (map) {
           map.addMarker(placemark.lat, placemark.lng, popup, placemark.category);
         } else {
-          console.error('map is not initialized yet');
+          console.error("map not ready");
         }
       }
     });
@@ -27,7 +27,7 @@
       if (map) {
         map.moveTo(lastPlacemark.lat, lastPlacemark.lng);
       } else {
-        console.error('map is not initialized yet');
+        console.error("map not ready");
       }
     }
   });

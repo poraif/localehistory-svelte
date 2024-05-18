@@ -2,7 +2,7 @@ import axios from "axios";
 import type { Session, User, Placemark } from "$lib/types/placemark-types";
 
 export const localeHistoryService = {
-    baseUrl: "http://localhost:3000",
+    baseUrl: "https://localehistory-hapi-7eb22fa00a2d.herokuapp.com",
 
     async signup(user: User): Promise<boolean> {
       try {

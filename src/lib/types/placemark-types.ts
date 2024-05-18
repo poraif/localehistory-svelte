@@ -14,13 +14,6 @@ export interface Session {
     token: string;
     }
 
-// export interface Street {
-//     _id?: string;
-//     name: string;
-//     userid?: User | string;
-//     placemarks?: Placemark[];
-// }
-
 export interface Placemark {
     _id?: string;
     title: string;
@@ -37,10 +30,3 @@ export interface DataSet {
     labels: string[];
     datasets: [{ values: number[] }];
     }
-
-
-
-// export interface Data {
-//     labels: string[];
-//     datasets: [{ label: string; data: number[]; backgroundColor: string; borderColor: string; borderWidth: number }];
-//     }

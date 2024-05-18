@@ -20,7 +20,6 @@
     <th>Title</th> 
     <th>Category</th>
     <th>Open</th>
-    <th>Delete</th>
   </thead>
   <tbody>
     {#each placemarks as placemark}
@@ -33,9 +32,6 @@
         </td>
         <td>
           <a href="/placemark/{placemark._id}">Open</a>
-        </td>
-        <td>
-          <a href="/dashboard">Delete</a>
         </td>
       </tr>
     {/each}

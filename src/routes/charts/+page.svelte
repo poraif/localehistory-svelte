@@ -8,7 +8,6 @@
   import type { DataSet, Placemark } from "$lib/types/placemark-types";
   import { generateByCategory, placemarksByCentury, placemarksByLocation } from "$lib/services/chart-utils";
   import Card from "$lib/ui/Card.svelte";
-  // import { Bar } from 'svelte-chartjs';
 
   let totalEachCategory: DataSet;
   let totalEachLocation: DataSet;

@@ -6,8 +6,22 @@
     import { localeHistoryService } from "$lib/services/localehistory-service";
     import { currentSession } from "$lib/stores";
     import { get } from "svelte/store";
+    import PlacemarkMap from "$lib/ui/PlacemarkMap.svelte";
+    import { onMount } from "svelte";
 
     export let data: PageData;
+    let placemarkMap: PlacemarkMap;
+
+    onMount(async () => {
+  if (typeof data.placemark.title === "string") {
+    const popup = `${data.placemark.title}: ${data.placemark.category}`;
+    if (placemarkMap) {
+        placemarkMap.addPlacemarkMarker(data.placemark.lat, data.placemark.lng, popup);
+    } else {
+      console.error('map is not initialized yet');
+    }
+  }
+});
 
     subTitle.set(`${data.placemark.title}`);
 
@@ -42,6 +56,8 @@
             }
         }
     }
+
+
 
 </script>
 
@@ -101,3 +117,7 @@
       </div>
     </div>
   </form>
+
+<Card title="Placemark map">
+  <PlacemarkMap id={data.placemark.title} height={60} bind:this={placemarkMap} />
+</Card>

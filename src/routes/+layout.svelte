@@ -19,15 +19,8 @@
 
 <div class="container">
   {#if $currentSession?.token}
-  <SignedIn>
-    <UserButton afterSignOutUrl="/" />
-  </SignedIn>
     <Menu />
     <Heading />
   {/if}
-  <SignedOut>
-    <a href="/login">Sign in</a> <span>|</span> <a href="/signup">Sign up</a>
-    <!-- You could also use <SignInButton mode="modal" /> and <SignUpButton mode="modal" /> here -->
-  </SignedOut>
   <slot />
 </div>

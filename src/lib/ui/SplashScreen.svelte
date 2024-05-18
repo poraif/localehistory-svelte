@@ -10,7 +10,7 @@
           </div>
           <div class="column is-6 is-offset-1">
             <h1 class="title is-2 mb-5">
-              <span class="icon mr-5"><i class="fas fa-map-marker-alt"></i></span>
+              <span class="icon mr-5"><i class="fas fa-monument"></i></span>
               <p>Locale History</p>
             </h1>
             <h2 class="subtitle is-4 mt-2">An interactive people's history map</h2>
@@ -19,7 +19,7 @@
                 <span class="icon"><i class="fas fa-plus"></i></span><span>Sign Up</span>
               </a>
               <a class="button is-medium is-link" href="/login">
-                <span class="icon"><i class="fas fa-sign-in"></i></span><span>Login</span>
+                <span class="icon"><i class="fas fa-right-to-bracket"></i></span><span>Sign Up</span>
               </a>
             </p>
           </div>
