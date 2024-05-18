@@ -19,7 +19,7 @@
                 <span class="icon"><i class="fas fa-plus"></i></span><span>Sign Up</span>
               </a>
               <a class="button is-medium is-link" href="/login">
-                <span class="icon"><i class="fas fa-right-to-bracket"></i></span><span>Sign Up</span>
+                <span class="icon"><i class="fas fa-right-to-bracket"></i></span><span>Log in</span>
               </a>
             </p>
           </div>
