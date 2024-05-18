@@ -30,6 +30,7 @@ export interface Placemark {
     lat: number;
     lng: number;
     userid?: string;
+    img?: string;
     }
 
 export interface DataSet {

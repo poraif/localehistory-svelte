@@ -3,6 +3,9 @@
     import { subTitle } from "$lib/stores";
     import UploadWidget from "$lib/components/UploadWidget.svelte";
     import Card from "$lib/ui/Card.svelte";
+    import { localeHistoryService } from "$lib/services/localehistory-service";
+    import { currentSession } from "$lib/stores";
+    import { get } from "svelte/store";
 
     export let data: PageData;
 
@@ -22,6 +25,24 @@
             console.warn('Placemark ID mismatch:', data.placemark._id, placemarkId);
         }
     }
+    async function handleDeleteImage() {
+        if (imgUrl) {
+            try {
+                if (data.placemark._id) {
+                    const success = await localeHistoryService.deleteImage(data.placemark._id, get(currentSession));
+                    if (success) {
+                        imgUrl = "";
+                        console.log('Image deleted successfully');
+                    } else {
+                        console.error('Failed to delete image');
+                    }
+                }
+            } catch (error) {
+                console.error('Error deleting image:', error);
+            }
+        }
+    }
+
 </script>
 
 <section class="section">
@@ -66,9 +87,17 @@
 
 <form>
     <div class="field">
-      <label for="image-upload" class="label">Image</label>
       <div class="control">
-        <UploadWidget placemarkId={data.placemark._id} on:imageUploaded={handleImageUploaded} />
+        {#if data.placemark._id}
+    <UploadWidget placemarkId={data.placemark._id} on:imageUploaded={handleImageUploaded} />
+        {/if}   
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        {#if imgUrl}
+        <button class="button is-danger" on:click|preventDefault={handleDeleteImage}>Delete image</button>
+        {/if}   
       </div>
     </div>
   </form>

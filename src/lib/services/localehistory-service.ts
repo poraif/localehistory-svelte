@@ -85,55 +85,14 @@ export const localeHistoryService = {
         return res.data;
     },
 
-    async deletePlacemark(id: string) {
-      const res = await axios.delete(`${this.baseUrl}/api/placemarks/${id}`);
-      return res.data;
+    async deleteImage(id: string, session: Session): Promise<boolean> {
+      try {
+          axios.defaults.headers.common['Authorization'] = `Bearer ${session.token}`;
+          const res = await axios.delete(`${this.baseUrl}/api/placemarks/${id}/image`);
+          return res.status === 204;
+      } catch (error) {
+          console.error('Error deleting image:', error);
+          return false;
+      }
   },
-
-        // async createStreet(street: Street, session: Session) {
-    //   try {
-    //     axios.defaults.headers.common["Authorization"] = session.token;
-    //     const response = await axios.post(this.baseUrl + "/api/streets", street);
-    //     console.log(session.token);
-    //     return response.status == 201;
-    //   } catch (error) {
-    //     return false;
-    //   }
-    // },
-
-    // async deleteAllStreets(): Promise<boolean> {
-    //     const res = await axios.delete(`${this.baseUrl}/api/streets`);
-    //     return res.data;
-    // },
-
-    // async deleteStreet(street: Street): Promise<boolean> {
-    //     const res = await axios.delete(`${this.baseUrl}/api/streets/${street._id}`);
-    //     return res.data;
-    // },
-
-    // async getAllStreets(session: Session): Promise<Street[]> {
-    //     try {
-    //     axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
-    //     const res = await axios.get(`${this.baseUrl}/api/streets`);
-    //     return res.data;
-    //     } catch (error) {
-    //        return [];
-    //   }
-    // },
-  
-
-    // async getStreet(id: string, session: Session): Promise<Street> {
-    //     axios.defaults.headers.common["Authorization"] = "Bearer " + session.token;
-    //     const res = await axios.get(`${this.baseUrl}/api/streets/${id}`);
-    //     return res.data;
-    // },
-
-        // async getStreetPlacemarks(id: string): Promise<Placemark[]> {
-    //     try {
-    //     const res = await axios.get(`${this.baseUrl}/api/placemarks/${id}`);
-    //     return res.data;
-    //     } catch (error) {
-    //        return [];
-    //   }
-    // },
   };

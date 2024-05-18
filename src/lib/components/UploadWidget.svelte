@@ -39,4 +39,4 @@
     }
 </script>
 
-<button class="button is-success" on:click|preventDefault={handleClick}>Upload</button>
+<button class="button is-success" on:click|preventDefault={handleClick}>Upload image</button>
