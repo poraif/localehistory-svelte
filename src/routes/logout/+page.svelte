@@ -2,7 +2,11 @@
   import { goto } from "$app/navigation";
   import { currentSession } from "$lib/stores";
 
-  currentSession.set({ email: "", _id: "", token: "" });
-  localStorage.removeItem("localehistory");
-  goto("/");
+  function logout() {
+    currentSession.set({ email: "", _id: "", token: "" });
+    localStorage.removeItem("localehistory");
+    goto("/");
+  }
 </script>
+
+<button on:click={logout}>Logout</button>

@@ -167,8 +167,7 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_client.js",
-      "_stores.js"
+      "_client.js"
     ]
   },
   "src/routes/maps/+page.svelte": {
