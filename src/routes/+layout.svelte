@@ -22,7 +22,6 @@
     <Menu />
     <Heading />
   {/if}
-  <!-- adds logout button for Clerk auth -->
   <SignedIn>
     <ClerkMenu />
   </SignedIn>

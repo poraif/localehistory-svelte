@@ -41,7 +41,7 @@ const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $currentSession, $$unsubscribe_currentSession;
   $$unsubscribe_currentSession = subscribe(currentSession, (value) => $currentSession = value);
   $$unsubscribe_currentSession();
-  return `<div class="container">${$currentSession?.token ? `${validate_component(Menu, "Menu").$$render($$result, {}, {}, {})} ${validate_component(Heading, "Heading").$$render($$result, {}, {}, {})}` : ``}  ${validate_component(SignedIn, "SignedIn").$$render($$result, {}, {}, {
+  return `<div class="container">${$currentSession?.token ? `${validate_component(Menu, "Menu").$$render($$result, {}, {}, {})} ${validate_component(Heading, "Heading").$$render($$result, {}, {}, {})}` : ``} ${validate_component(SignedIn, "SignedIn").$$render($$result, {}, {}, {
     default: () => {
       return `${validate_component(ClerkMenu, "ClerkMenu").$$render($$result, {}, {}, {})}`;
     }
