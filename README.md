@@ -1,38 +1,42 @@
-# create-svelte
+# Locale history - Sveltekit version
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A people's history app for users to submit their own local knowledge and points of interest.
+https://localehistory-svelte.netlify.app/ 
+ 
+## Introduction
+People's history - i.e. the events and stories of normal people and communities - can be hard to learn about and find without insider or local knowledge. This web app will allow users to add, collate and share points of interest to facilitate sharing and preserving stories both within the local community, and for interested visitors.
 
-## Creating a project
+## example logins
 
-If you're seeing this, you've probably already done this step. Congrats!
+Log in with:
+email: homer@simpson.com
+password: secret
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+##  Key Features
+1.	At points of historical interest 
+2.	See chart layouts of your points of interest based on town, category and century
+3.	View a clickable map of your points
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Known bugs for future updates
+-	Clerk authentication currently not connected to backend
+-	Image deletion causes other placemarks to be removed
+-	Rendering issues upon page reload
+-	Markers on individual placemark maps not rendering
+   
+## Technologies
+- Built with Sveltekit framework
+-	Node.js backend built with Hapi framework and Joi validation
+-	Clerk third party authentication
+-	Leaflet map and Frappe charts
+-	MongoDB Atlas database
+-	Frontend deployed in Netlify, backend deployed Heroku
 
-## Developing
+## Installation
+To run the app locally, enter the following into the terminal:
+- git clone git clone https://github.com/poraif/localehistory-svelte.git
+- npm install
+- npm run dev
+- visit http://localhost:5173 in browser
+_NB the above assumes git, node and npm are installed
+_
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
