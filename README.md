@@ -22,6 +22,7 @@ password: secret
 -	Image deletion causes other placemarks to be removed
 -	Rendering issues upon page reload
 -	Markers on individual placemark maps not rendering
+-	Sessions not successfully clearing
    
 ## Technologies
 - Built with Sveltekit framework
