@@ -21,8 +21,8 @@
     <Menu />
     <Heading />
   {/if}
-  <SignedIn>
+  <!-- <SignedIn>
     <ClerkMenu />
-  </SignedIn>
+  </SignedIn> -->
   <slot />
 </div>

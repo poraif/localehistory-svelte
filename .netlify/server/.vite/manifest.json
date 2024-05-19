@@ -105,8 +105,7 @@
     "imports": [
       "_utils.js",
       "_ssr.js",
-      "_stores.js",
-      "_index.js"
+      "_stores.js"
     ]
   },
   "src/routes/+page.svelte": {
