@@ -3,8 +3,9 @@
   import { currentSession } from "$lib/stores";
   import Heading from "$lib/ui/Heading.svelte";
   import Menu from "$lib/ui/Menu.svelte";
-  import ClerkMenu from "$lib/ui/ClerkMenu.svelte";
-  import SignedIn from 'clerk-sveltekit/client/SignedIn.svelte'
+  import UserButton from 'clerk-sveltekit/client/UserButton.svelte'
+	import SignedIn from 'clerk-sveltekit/client/SignedIn.svelte'
+	import SignedOut from 'clerk-sveltekit/client/SignedOut.svelte'
 
   if (browser) {
     const savedSession = localStorage.localehistory;
@@ -21,8 +22,5 @@
     <Menu />
     <Heading />
   {/if}
-  <!-- <SignedIn>
-    <ClerkMenu />
-  </SignedIn> -->
   <slot />
 </div>
